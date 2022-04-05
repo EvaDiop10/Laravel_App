@@ -10,7 +10,7 @@
 @csrf
 
     <div>
-    <form action="POST" action="typepropretaire/store">
+    <form method="POST" action="typepropretaire/store">
         <select name="typeproprietaires" class="form-select" aria-label="Default select example">
             <option selected>Type proprietaire</option>
             <option value="1">Personnel</option>

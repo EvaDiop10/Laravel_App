@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('typeproprietaires', function (Blueprint $table) {
+        Schema::create('type_proprietaires', function (Blueprint $table) {
             $table->id();
                 $table->string('libelle');
                 $table->timestamp('last_used_at')->nullable();

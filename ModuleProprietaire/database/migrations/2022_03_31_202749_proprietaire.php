@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('nationalite');
             $table->string('code_proprietaire');
-            $table->unsignedBigInteger('typeproprietaires_id');
-            $table->foreign('typeproprietaires_id')->references('id')->on('typeproprietaires');
+            $table->unsignedBigInteger('type_proprietaires_id');
+            $table->foreign('type_proprietaires_id')->references('id')->on('type_proprietaires');
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');
             $table->timestamp('last_used_at')->nullable();

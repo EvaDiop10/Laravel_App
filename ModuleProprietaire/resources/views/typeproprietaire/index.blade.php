@@ -10,7 +10,7 @@
 <div class="mb-3">
             <select name="typeproprietaire_id" id="">Selectionnez le type
                 @foreach($typeproprietaire as $typeproprietaires)
-                <option value="1">{{$typeproprietaire->libelle}}</option>
+                <option value="{{$typeproprietaires->id}}">{{$typeproprietaires->libelle}}</option>
                 @endforeach
             </select>
         </div>

@@ -69,9 +69,7 @@
     <div class="col-md-4">
         <label for="typeproprietaire" class="form-label">Type proprietaire</label>
         <select id="inputState" class="form-select" name="typeproprietaire_id">
-            @foreach($typeproprietaires as $typeproprietaire)
-            <option value="{{$typeproprietaire->id}}" selected>{{$typeproprietaire->libelle}}</option>
-            @endforeach
+            <option value="" selected></option>
         </select>
     </div>
     <div class="col-12">

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('montant');
             $table->string('adresse_propriete');
             $table->boolean('statut');
-            $table->unsignedBigInteger('typeproprietes_id');
-            $table->foreign('typeproprietes_id')->references('id')->on('typeproprietes');
+            $table->unsignedBigInteger('type_proprietes_id');
+            $table->foreign('type_proprietes_id')->references('id')->on('type_proprietes');
             $table->timestamp('last_used_at')->nullable();
             $table->timestamps();
         });
