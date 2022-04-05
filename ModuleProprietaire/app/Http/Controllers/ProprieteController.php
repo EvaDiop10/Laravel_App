@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Propriete;
 use Illuminate\Http\Request;
+use App\Models\TypeProprietaire;
 
 class ProprieteController extends Controller
 {
@@ -27,9 +28,9 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        $proprietes = Propriete::All();
-        return view('propriete.create',[
-            'propriete'=>$proprietes
+        $typeproprietes = TypeProprietaire::All();
+        return view('propriete/create',[
+            'typeproprietes'=>$typeproprietes
         ]);
     }
 

@@ -12,7 +12,7 @@
     <form method="POST" action="typepropretaire/store">
         <select name="typeproprietaires" class="form-select" aria-label="Default select example">
             <option selected>Type proprietaire</option>
-            <option value="1">Personnel</option>
+            <option value="1">Particulier</option>
             <option value="2">Professionnel</option>
         </select>
         <button type="submit" class="btn btn-primary">Enregistrer</button>

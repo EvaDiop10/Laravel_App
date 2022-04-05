@@ -9,17 +9,17 @@
     <title>Document</title>
 </head>
 <body>
-    @csrf
     <h2>Ajouter Proprietaire</h2>
 <div class="container">
-    <form class="row g-3" action="{{route('proprietaires.store')}}" method="POST">
+    <form class="row g-3" method="POST" action="{{route('proprietaires.store')}}" >
+    @csrf
     <div class="col-md-6">
         <label  class="form-label">nom</label>
         <input  name="nom" class="form-control" id="inputEmail4">
     </div>
     <div class="col-md-6">
         <label for="inputPassword4" class="form-label">Prenom</label>
-        <input  class="form-control" id="inputPassword4">
+        <input name="prenom"  class="form-control" id="inputPassword4">
     </div>
     <div class="col-md-6">
         <label  class="form-label">Sexe</label>
@@ -47,15 +47,15 @@
     </div>
     <div class="col-md-6">
         <label  class="form-label">Code Proprietaire</label>
-        <input  name="code_propriete" class="form-control" id="inputEmail4"  placeholder="Prop-CNI">
+        <input  name="code_proprietaire" class="form-control" id="inputEmail4"  placeholder="Prop-CNI">
     </div>
     <div class="col-12">
         <label for="inputAddress2" class="form-label">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        <input name="adresse" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
     </div>
     <div class="col-12 ">
         <label for="inputAddress2" class="form-label">Photo</label>
-        <input type="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        <input name="photo" type="file" class="form-control" enctype='multipart/form-data' id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
     </div>
     <div class="col-md-4">
         <label for="inputState" class="form-label">nationalite</label>
@@ -68,14 +68,17 @@
     </div>
     <div class="col-md-4">
         <label for="typeproprietaire" class="form-label">Type proprietaire</label>
-        <select id="inputState" class="form-select" name="typeproprietaire_id">
-            <option value="" selected></option>
+        <select id="inputState" class="form-select" name="type_proprietaires_id">
+            @foreach($typeproprietaires as $typeproprietaire)
+            <option name="type_proprietaires_id" value="{{$typeproprietaire->id}}" >{{$typeproprietaire->libelle}}</option>
+            @endforeach
         </select>
     </div>
     <div class="col-12">
         <button type="submit" class="btn btn-primary">Ajouter</button>
     </div>
     </form>
+    
 </div>
 </body>
 </html>

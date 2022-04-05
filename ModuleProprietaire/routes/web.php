@@ -34,9 +34,14 @@ Route::resource('typeproprietaires', TypeproprietaireController::class)->middlew
 Route::resource('typeproprietes', TypeproprieteController::class)->middleware('auth');
 Route::post('/proprietaires/create',[ProprietaireController::class,'create']);
 Route::get('/proprietaires',[ProprietaireController::class,'index']);
+Route::get('/proprietaires/store',[ProprietaireController::class,'store']);
 Route::get('/proprietes',[ProprieteController::class,'index']);
 Route::post('/proprietes/create',[ProprieteController::class,'create']);
-Route::post('/typeproprietaire/create',[TypeproprietaireController::class,'create']);
 Route::get('/typeproprietaire/index',[TypeproprietaireController::class,'index']);
+Route::get('/typeproprietaire/create',[TypeproprietaireController::class,'create']);
+Route::get('/typepropriete/create',[TypeproprieteController::class,'create']);
+Route::get('/typepropriete/index',[TypeproprieteController::class,'index']);
+
+
 
 

@@ -12,7 +12,7 @@
     @csrf
     <h2>Ajouter Proprietés</h2>
 <div class="container">
-    <form class="row g-3" action="{{route('proprietaires.store')}}" method="POST">
+    <form class="row g-3" action="/proprietaires/store" method="POST">
     <div class="col-md-6">
         <label  class="form-label">Nom du proprieté</label>
         <input  name="nom" class="form-control" id="inputEmail4">
@@ -38,9 +38,11 @@
         <input  name="telephone" class="form-control" id="inputEmail4">
     </div>
     <div class="col-md-4">
-        <label for="typeproprietaire" class="form-label">Proprietaire</label>
-        <select id="inputState" class="form-select" name="typeproprietaire_id">
-        <option value="1" selected></option>
+        <label for="type_propriete" class="form-label">Type de propriete</label>
+        <select id="inputState" class="form-select" name="typepropriete_id">
+            @foreach($typeproprietes as $typepropriete)
+            <option value="{{$typepropriete->id}}" selected>{{$typepropriete->libelle}}</option>
+            @endforeach
         </select>
     </div>
     <div class="col-12">

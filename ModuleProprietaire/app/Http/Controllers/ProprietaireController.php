@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Proprietaire;
 use Illuminate\Http\Request;
+use App\Models\TypeProprietaire;
 
 class ProprietaireController extends Controller
 {
@@ -27,7 +28,10 @@ class ProprietaireController extends Controller
      */
     public function create()
     {
-        return view('proprietaire.create');
+        $typeproprietaires = TypeProprietaire::All();
+        return view('proprietaire.create',[
+            'typeproprietaires'=>$typeproprietaires
+        ]);
     }
 
     /**
@@ -38,7 +42,8 @@ class ProprietaireController extends Controller
      */
     public function store(Request $request)
     {
-        $proprietaires = Proprietaire::create([
+        $user = auth()->user();
+        Proprietaire::create([
             "nom"=>$request->nom,
             "prenom"=>$request->prenom,
             "sexe"=>$request->sexe,
@@ -50,10 +55,11 @@ class ProprietaireController extends Controller
             "photo"=>$request->photo,
             "nationalite"=>$request->nationalite,
             "code_proprietaire"=>$request->code_proprietaire,
-            "type_proprietaires_id	"=>$request->type_proprietaires_id,
+            "type_proprietaires_id"=>$request->type_proprietaires_id,
+            "users_id"=>$user->id,
         ]);
-        return response()->json($proprietaires,201);
-    }
+        return redirect()->route('proprietaire.index');   
+     }
 
     /**
      * Display the specified resource.
@@ -63,7 +69,7 @@ class ProprietaireController extends Controller
      */
     public function show(Proprietaire $proprietaires)
     {
-        return response()->json($proprietaires);
+        return view('proprietaires.show',compact('proprietaires'));
     }
 
     /**

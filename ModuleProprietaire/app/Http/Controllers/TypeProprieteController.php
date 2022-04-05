@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\TypePropriete;
 
 class TypeproprieteController extends Controller
 {
@@ -13,7 +14,12 @@ class TypeproprieteController extends Controller
      */
     public function index()
     {
-        //
+         // On récupère tous les Types
+         $typeproprietes = TypePropriete::all();
+         // On retourne les informations des types en JSON
+         return view('typepropriete/index',[
+             'typeproprietes'=>$typeproprietes
+         ]);
     }
 
     /**
@@ -23,7 +29,8 @@ class TypeproprieteController extends Controller
      */
     public function create()
     {
-        //
+        return view('typepropriete/create');
+
     }
 
     /**
