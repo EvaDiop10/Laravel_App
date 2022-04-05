@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('sexe')->nullable();
             $table->string('civilite')->nullable();
             $table->date('date_naissance')->nullable();
-            $table->string('cni')->unique();
+            $table->string('cni')->nullable();
             $table->integer('telephone')->unique();
             $table->string('adresse');
             $table->string('photo')->nullable();

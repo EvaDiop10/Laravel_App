@@ -5,7 +5,9 @@ use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\ProprieteController;
 use App\Http\Controllers\ProprietaireController;
 use App\Http\Controllers\TypeproprieteController;
-use App\Http\Controllers\TypeproprietaireController;
+use App\Http\Controllers\TypeProprietaireController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +35,11 @@ Route::resource('agences', AgenceController::class)->middleware('auth');
 Route::resource('typeproprietaires', TypeproprietaireController::class)->middleware('auth');
 Route::resource('typeproprietes', TypeproprieteController::class)->middleware('auth');
 Route::post('/proprietaires/create',[ProprietaireController::class,'create']);
-Route::get('/proprietaires',[ProprietaireController::class,'index']);
+Route::get('/proprietaires',[ProprietaireController::class,'index'])->name('proprietaires.index');
+Route::post('/proprietaires/store',[ProprietaireController::class,'store']);
 Route::get('/proprietes',[ProprieteController::class,'index']);
 Route::post('/proprietes/create',[ProprieteController::class,'create']);
-Route::post('/typeproprietaire/create',[TypeproprietaireController::class,'create']);
-Route::get('/typeproprietaire/index',[TypeproprietaireController::class,'index']);
+Route::get('/typeproprietaire/create',[TypeProprietaireController::class,'create']);
+Route::get('/typeproprietaire/index',[TypeProprietaireController::class,'index']);
 
 
