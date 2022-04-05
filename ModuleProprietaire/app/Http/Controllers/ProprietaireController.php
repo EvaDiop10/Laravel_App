@@ -15,7 +15,7 @@ class ProprietaireController extends Controller
      */
     public function index()
     {
-        $proprietaires = Proprietaire::All();
+        $proprietaires = Proprietaire::all();
         return view('proprietaire/index',[
             'proprietaire'=>$proprietaires
         ]);
@@ -49,7 +49,6 @@ class ProprietaireController extends Controller
         $name=$request->file('photo')->storeAs('proprietaires',$filename,'public');
         $code_proprietaire ='PROPRIO-'.$request->type_proprietaires_id.'-'.time().'-'.rand(100,500);
         if ($typeproprietaires->libelle == 'personnel') {
-            // dd($typeproprietaires->libelle);
             $request->validate([
                 'nom' => 'required',
                 'prenom' => 'required',
@@ -81,15 +80,6 @@ class ProprietaireController extends Controller
             return redirect()->route('proprietaires.index');
         }
         else{
-            $request->validate([
-                'nom' => 'required',
-                'telephone' => 'required',
-                'adresse' => 'required',
-                'type_proprietaires_id' => 'required',
-                'photo' => 'required',
-                'natinalite' => 'required',
-
-            ]);
             Proprietaire::create([
                 'nom'=>$request->nom,
                 'type_proprietaires_id'=>$request->type_proprietaires_id,
