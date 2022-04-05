@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Proprietaire;
 use Illuminate\Http\Request;
 
 class ProprietaireController extends Controller
@@ -13,7 +14,10 @@ class ProprietaireController extends Controller
      */
     public function index()
     {
-        //
+        $proprietaires = Proprietaire::All();
+        return view('proprietaire/index',[
+            'proprietaire'=>$proprietaires
+        ]);
     }
 
     /**
@@ -23,7 +27,7 @@ class ProprietaireController extends Controller
      */
     public function create()
     {
-        //
+        return view('proprietaire.create');
     }
 
     /**
@@ -34,7 +38,21 @@ class ProprietaireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $proprietaires = Proprietaire::create([
+            "nom"=>$request->nom,
+            "prenom"=>$request->prenom,
+            "sexe"=>$request->sexe,
+            "civilite"=>$request->civilite,
+            "date_naissance"=>$request->date_naissance,
+            "cni"=>$request->cni,
+            "telephone"=>$request->telephone,
+            "adresse"=>$request->adresse,
+            "photo"=>$request->photo,
+            "nationalite"=>$request->nationalite,
+            "code_proprietaire"=>$request->code_proprietaire,
+            "type_proprietaires_id	"=>$request->type_proprietaires_id,
+        ]);
+        return response()->json($proprietaires,201);
     }
 
     /**
@@ -43,9 +61,9 @@ class ProprietaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Proprietaire $proprietaires)
     {
-        //
+        return response()->json($proprietaires);
     }
 
     /**
@@ -56,7 +74,7 @@ class ProprietaireController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -66,9 +84,23 @@ class ProprietaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Proprietaire $proprietaires)
     {
-        //
+        $proprietaires->update([
+            "nom"=>$request->nom,
+            "prenom"=>$request->prenom,
+            "sexe"=>$request->sexe,
+            "civilite"=>$request->civilite,
+            "date_naissance"=>$request->date_naissance,
+            "cni"=>$request->cni,
+            "telephone"=>$request->telephone,
+            "adresse"=>$request->adresse,
+            "photo"=>$request->photo,
+            "nationalite"=>$request->nationalite,
+            "code_proprietaire"=>$request->code_proprietaire,
+            "type_proprietaires_id	"=>$request->type_proprietaires_id,
+        ]);
+        return response()->json();
     }
 
     /**
@@ -77,8 +109,15 @@ class ProprietaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Proprietaire $proprietaires)
     {
-        //
+        $proprietaires->delete();
+        return response()->json();
+    }
+    public function type ($id){
+        $proprietaires = Proprietaire::where('typeproprietaire_id',$id)->get();
+        return view('proprietaire.create',[
+            'proprietaires'=>$proprietaires
+        ]);
     }
 }

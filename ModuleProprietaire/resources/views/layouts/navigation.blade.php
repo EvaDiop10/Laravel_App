@@ -87,6 +87,14 @@
                     </x-responsive-nav-link>
                 </form>
             </div>
+           
         </div>
     </div>
+     <!-- Lien pour la création d'une tâche -->
+     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                <x-nav-link :href="route('proprietaires.create')" :active="request()->routeIs('proprietaires.create')">
+                    {{ __('Enregistrer un proprietaire') }}
+                </x-nav-link>
+    </div>
+    
 </nav>

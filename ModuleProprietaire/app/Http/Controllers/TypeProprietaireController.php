@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Propriete;
 use Illuminate\Http\Request;
+use App\Models\TypeProprietaire;
 
-class ProprieteController extends Controller
+class TypeProprietaireController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +14,13 @@ class ProprieteController extends Controller
      */
     public function index()
     {
-        $proprietes = Propriete::All();
-        return view('propriete.index',[
-            'propriete'=>$proprietes
+        // On récupère tous les Types
+        $typeproprietaires = TypeProprietaire::all();
+        // On retourne les informations des types en JSON
+        return view('proprietaire/create',[
+            'typeproprietaire'=>$typeproprietaires
         ]);
+        //return response()->json($typeproprietaires);
     }
 
     /**
@@ -27,10 +30,11 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        $proprietes = Propriete::All();
-        return view('propriete.create',[
-            'propriete'=>$proprietes
+        $typeproprietaires = TypeProprietaire::all();
+        return view('proprietaire/create',[
+            'typeproprietaires'=>$typeproprietaires
         ]);
+
     }
 
     /**
@@ -41,7 +45,10 @@ class ProprieteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TypeProprietaire::create($request->All([
+        'libelle'=>$request->libelle
+        ]));
+        return redirect()->route('typeproprietaire.index');
     }
 
     /**
@@ -50,9 +57,9 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(TypeProprietaire $typeproprietaires)
     {
-        //
+        return response()->json($typeproprietaires);
     }
 
     /**
@@ -73,9 +80,12 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,TypeProprietaire $typeproprietaires)
     {
-        //
+        $typeproprietaires->update([
+            "libelle" =>$request->libelle
+        ]);
+        return response()->json();
     }
 
     /**
@@ -84,8 +94,9 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(TypeProprietaire $typeproprietaires)
     {
-        //
+        $typeproprietaires->delete();
+        return response()->json();
     }
 }

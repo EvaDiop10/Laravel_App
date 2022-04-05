@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Propriete;
 use Illuminate\Http\Request;
 
-class ProprieteController extends Controller
+class TypeProprieteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,10 +13,7 @@ class ProprieteController extends Controller
      */
     public function index()
     {
-        $proprietes = Propriete::All();
-        return view('propriete.index',[
-            'propriete'=>$proprietes
-        ]);
+        //
     }
 
     /**
@@ -27,10 +23,7 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        $proprietes = Propriete::All();
-        return view('propriete.create',[
-            'propriete'=>$proprietes
-        ]);
+        //
     }
 
     /**
