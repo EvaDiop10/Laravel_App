@@ -11,7 +11,7 @@
 <body>
     <h2>Ajouter Proprietaire</h2>
 <div class="container">
-    <form class="row g-3" method="POST" action="{{route('proprietaires.store')}}" >
+    <form class="row g-3" method="POST" action="{{route('proprietaires.store')}}" enctype='multipart/form-data' >
     @csrf
     <div class="col-md-6">
         <label  class="form-label">nom</label>
@@ -55,7 +55,7 @@
     </div>
     <div class="col-12 ">
         <label for="inputAddress2" class="form-label">Photo</label>
-        <input name="photo" type="file" class="form-control" enctype='multipart/form-data' id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+        <input name="photo" type="file" class="form-control"  id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
     </div>
     <div class="col-md-4">
         <label for="inputState" class="form-label">nationalite</label>

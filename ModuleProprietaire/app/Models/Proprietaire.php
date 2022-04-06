@@ -21,6 +21,7 @@ class Proprietaire extends Model
         'nationalite',
         'code_proprietaire',
         'type_proprietaires_id',
-
+        'users_id',
     ];
+    protected $guarded = ['id'];
 }

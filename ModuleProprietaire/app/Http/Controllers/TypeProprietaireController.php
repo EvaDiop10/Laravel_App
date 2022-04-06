@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\TypeProprietaire;
 
-class TypeproprietaireController extends Controller
+class TypeProprietaireController extends Controller
 {
     /**
      * Display a listing of the resource.
