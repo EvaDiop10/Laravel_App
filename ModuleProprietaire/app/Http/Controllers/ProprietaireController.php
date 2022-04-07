@@ -95,7 +95,10 @@ class ProprietaireController extends Controller
         }
 
     }
-
+    public function delete(Proprietaire $proprietaire){
+        $proprietaire->delete();
+        return redirect()->route('proprietaires.index');
+    }
 
     /**
      * Display the specified resource.

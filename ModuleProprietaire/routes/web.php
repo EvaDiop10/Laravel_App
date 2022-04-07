@@ -33,6 +33,8 @@ Route::resource('agences', AgenceController::class)->middleware('auth');
 Route::resource('typeproprietaires', TypeproprietaireController::class)->middleware('auth');
 Route::resource('typeproprietes', TypeproprieteController::class)->middleware('auth');
 Route::post('/proprietaires/create',[ProprietaireController::class,'create']);
+Route::post('/proprietaires/update/{proprietaire}',[ProprietaireController::class,'update'])->name('proprietaires.update');
+Route::get('/proprietaires/delete/{proprietaire}',[ProprietaireController::class,'delete'])->name('proprietaires.delete');
 Route::get('/proprietaires',[ProprietaireController::class,'index'])->name('proprietaires.index');
 Route::post('/proprietaires/store',[ProprietaireController::class,'store']);
 Route::get('/proprietes',[ProprieteController::class,'index']);
