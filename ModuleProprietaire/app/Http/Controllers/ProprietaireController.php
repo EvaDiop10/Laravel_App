@@ -157,32 +157,24 @@ class ProprietaireController extends Controller
                 'telephone' => 'required',
                 'adresse' => 'required',
                 'type_proprietaires_id' => 'required',
-                'photo' => 'required',
                 'sexe' => 'required',
                 'date_naissance' => 'required',
                 'civilite' => 'required',
-                'nationalite' => 'required'
+                'nationalite' => 'required',
+                'cni'=>'required'
 
             ]);
-
-            $filename = time().'.'.$request->photo->extension();
-            $name=$request->file('photo')->storeAs('proprietaires',$filename,'public');
-            $code_proprietaire ='PROPRIO-'.$request->type_proprietaires_id.'-'.time().'-'.rand(100,500);
-
-            $proprietaire->update([
+            $proprietaire->find($request->id)->update([
                 'nom'=>$request->nom,
                 'prenom'=>$request->prenom,
-                'type_proprietaires_id'=>$request->type_proprietaires_id,
                 'telephone'=>$request->telephone,
-                'cni'=>$request->cni,
                 'adresse'=>$request->adresse,
-                'nationalite'=>$request->nationalite,
+                'type_proprietaires_id'=>$request->type_proprietaires_id,
                 'sexe'=>$request->sexe,
-                'civilite'=>$request->civilite,
                 'date_naissance'=>$request->date_naissance,
-                'photo'=>$name,
-                'code_proprietaire'=>$code_proprietaire,
-                'users_id'=>$user->id
+                'civilite'=>$request->civilite,
+                'cni'=>$request->cni,
+                'nationalite'=>$request->nationalite,
             ]);
             return redirect()->route('proprietaires.index');
         }
@@ -192,25 +184,18 @@ class ProprietaireController extends Controller
                 'telephone' => 'required',
                 'adresse' => 'required',
                 'type_proprietaires_id' => 'required',
-                'photo' => 'required',
                 'nationalite' => 'required'
 
             ]);
-            $proprietaire->update([
+            $proprietaire->find($request->id)->update([
                 'nom'=>$request->nom,
                 'type_proprietaires_id'=>$request->type_proprietaires_id,
                 'telephone'=>$request->telephone,
                 'adresse'=>$request->adresse,
                 'nationalite'=>$request->nationalite,
-                'photo'=>$name,
-                'code_proprietaire'=>$code_proprietaire,
                 'users_id'=>$user->id
 
             ]);
-
-            $filename = time().'.'.$request->photo->extension();
-            $name=$request->file('photo')->storeAs('proprietaires',$filename,'public');
-            $code_proprietaire ='PROPRIO-'.$request->type_proprietaires_id.'-'.time().'-'.rand(100,500);
 
             return redirect()->route('proprietaires.index');
         }

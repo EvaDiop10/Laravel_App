@@ -8,7 +8,7 @@
             <div class="alert alert-danger">{{$error}}</div>  
         @endforeach
     @endif
-    <form class="row g-3" action="{{route('proprietaires.modifier')}}" method="POST" enctype= "multipart/form-data">
+    <form class="row g-3" action="{{route('proprietaires.modifier')}}" method="POST" >
     @csrf
     <div class="col-md-12">
         <label for="typeproprietaire" class="form-label">Type proprietaire</label>
@@ -19,6 +19,7 @@
         </select>
     </div>
     <div class="col-md-6">
+        <input type="hidden" name="id" value="{{$proprietaire->id}}">
         <label  class="form-label">nom</label>
         <input  name="nom" value="{{$proprietaire->nom}}" class="form-control" id="nom">
     </div>
@@ -37,7 +38,6 @@
     <div class="col-md-4">
         <label for="inputState" class="form-label">nationalite</label>
         <select id="inputState" class="form-select" name="nationalite">
-        <option selected>Choose...</option>
         <option value="Senegal">Sénégalais</option>
         <option value="Côte d'Ivoire">Ivoirien</option>
         <option value="Cameroun">Camerounais</option>
@@ -63,11 +63,6 @@
         <label for="inputAddress2" class="form-label">Address</label>
         <input type="text" value="{{($proprietaire->adresse)?$proprietaire->adresse:''}}" name="adresse" class="form-control" id="adresse" placeholder="Apartment, studio, or floor">
     </div>
-    <div class="col-12 ">
-        <label for="inputAddress2" class="form-label">Photo</label>
-        <input type="file" class="form-control" id="photo" aria-describedby="inputGroupFileAddon04"  name="photo" aria-label="Upload">
-    </div>
-
 
     <div class="col-5 my-2">
         <button type="submit" class="btn btn-primary col-6 ">Modifier</button>

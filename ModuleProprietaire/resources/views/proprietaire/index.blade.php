@@ -4,7 +4,8 @@
 @section('content_wrapper')
  <div class="rounded  m-5">  
 <h1>Propriétaires</h1> 
- <center><h2>Liste Proprietaire personnels </h2></center>
+<center><h2>Liste Proprietaire personnels </h2></center>
+ <a href="{{route('proprietaires.create')}}" class="btn btn-primary">Ajouter</a>
     <table class="table table table-striped">
     <thead>
     <tr>
