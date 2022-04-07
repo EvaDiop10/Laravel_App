@@ -8,7 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Propriete extends Model
 {
     use HasFactory;
-   
+  protected $fillable = [
+    "nom_propriete",
+    "superficie",
+    "nombre_etage",
+    "montant",
+    "adresse_propriete",
+    "statut",
+    "typeproprietes_id",
+  ];
     
     protected $casts = [
         'statut' => 'boolean',

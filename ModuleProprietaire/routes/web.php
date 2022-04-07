@@ -49,7 +49,12 @@ Route::get('/proprietaires/delete/{proprietaire}',[ProprietaireController::class
 //route proprietes
 Route::get('/proprietes',[ProprieteController::class,'index'])->name('proprietes.index');
 Route::post('/proprietes/create',[ProprieteController::class,'create']);
-Route::get('/proprietes/store',[ProprieteController::class,'store'])->name('proprietes.store');
+Route::post('/proprietes/store',[ProprieteController::class,'store'])->name('proprietes.store');
+Route::get('/proprietes/show/{propriete}',[ProprieteController::class,'show'])->name('proprietes.show');
+Route::get('/proprietes/update/{id}',[ProprieteController::class,'update']);
+Route::post('/proprietes/modifier',[ProprieteController::class,'modifier'])->name('proprietes.modifier');
+Route::get('/proprietes/delete/{propriete}',[ProprieteController::class,'destroy']);
+
 
 //route type_proprietaire
 Route::get('/typeproprietaire/index',[TypeproprietaireController::class,'index']);

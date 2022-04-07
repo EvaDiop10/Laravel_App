@@ -16,7 +16,7 @@ class ProprieteController extends Controller
     public function index()
     {
         return view('propriete.index',[
-            'proprietes'=> Propriete::with('typeproprietes')->get()
+            'proprietes'=> Propriete::all()
         ]);
     }
 
@@ -77,9 +77,27 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $typeproprietes = TypePropriete::all();
+        $propriete = Propriete::find($id);
+        return  view('propriete.update',[
+            'propriete'=>$propriete,
+            'typeproprietes'=>$typeproprietes]);
+    }
+    public function modifier(Request $request,Propriete $propriete)
+    {
+        $propriete = Propriete::find($request->id);
+        $propriete->update([
+            "nom_propriete"=>$request->nom_propriete,
+            "superficie"=>$request->superficie,
+            "nombre_etage"=>$request->nombre_etage,
+            "montant"=>$request->montant,
+            "adresse_propriete"=>$request->adresse_propriete,
+            "statut"=>$request->statut,
+            "type_proprietes_id"=>$request->typeproprietes_id,
+        ]);
+        return redirect()->route('proprietes.index');
     }
 
     /**
@@ -88,8 +106,10 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Propriete $propriete)
     {
-        //
+        $propriete->delete();
+        return redirect()->route('proprietes.index');
     }
+    
 }
