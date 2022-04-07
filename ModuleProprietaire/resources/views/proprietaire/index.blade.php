@@ -1,4 +1,3 @@
-
 @extends('layouts.admin')
 @section('title','TS IMMO | Propriétaires')
 @section('content_wrapper')

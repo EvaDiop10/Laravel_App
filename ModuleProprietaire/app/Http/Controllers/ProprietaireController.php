@@ -83,10 +83,20 @@ class ProprietaireController extends Controller
             return redirect()->route('proprietaires.index');
         }
         else{
+            $request->validate([
+                'nom' => 'required',
+                'type_proprietaires_id' => 'required',
+                'telephone' => 'required',
+                'adresse' => 'required',
+                'nationalite' => 'required',
+                'photo' => 'required'
+            ]);
+
             $user = auth()->user();
             $filename = time().'.'.$request->photo->extension();
             $name=$request->file('photo')->storeAs('proprietaires',$filename,'public');
             $code_proprietaire ='PROPRIO-'.$request->type_proprietaires_id.'-'.time().'-'.rand(100,500);
+
             Proprietaire::create([
                 'nom'=>$request->nom,
                 'type_proprietaires_id'=>$request->type_proprietaires_id,
@@ -118,16 +128,6 @@ class ProprietaireController extends Controller
         return response()->json($proprietaires);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        
-    }
 
     /**
      * Update the specified resource in storage.
@@ -219,3 +219,4 @@ class ProprietaireController extends Controller
         ]);
     }
 }
+

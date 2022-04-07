@@ -18,7 +18,7 @@ class TypeProprietaireController extends Controller
         $typeproprietaires = Typeproprietaire::all();
         // On retourne les informations des types en JSON
         return view('typeproprietaire/index',[
-            'typeproprietaire'=>$typeproprietaires
+            'typeproprietaires'=>$typeproprietaires
         ]);
         //return response()->json($typeproprietaires);
     }
@@ -30,9 +30,7 @@ class TypeProprietaireController extends Controller
      */
     public function create()
     {
-        //$typeproprietaires = TypeProprietaire::all();
-        return view('typeproprietaire/create'
-           );
+        return view('typeproprietaire/create');
 
     }
 
@@ -44,7 +42,7 @@ class TypeProprietaireController extends Controller
      */
     public function store(Request $request)
     {
-        Typeproprietaire::create($request->All([
+        TypeProprietaire::create($request->All([
         'libelle'=>$request->libelle
         ]));
         return redirect()->route('typeproprietaire.index');
@@ -56,7 +54,7 @@ class TypeProprietaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Typeproprietaire $typeproprietaires)
+    public function show(TypeProprietaire $typeproprietaires)
     {
         return response()->json($typeproprietaires);
     }
@@ -79,7 +77,7 @@ class TypeProprietaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Typeproprietaire $typeproprietaires)
+    public function update(Request $request,TypeProprietaire $typeproprietaires)
     {
         $typeproprietaires->update([
             "libelle" =>$request->libelle
@@ -93,7 +91,7 @@ class TypeProprietaireController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Typeproprietaire $typeproprietaires)
+    public function destroy(TypeProprietaire $typeproprietaires)
     {
         $typeproprietaires->delete();
         return response()->json();

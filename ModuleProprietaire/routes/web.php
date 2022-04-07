@@ -42,5 +42,3 @@ Route::get('/proprietes',[ProprieteController::class,'index']);
 Route::post('/proprietes/create',[ProprieteController::class,'create']);
 Route::get('/typeproprietaire/create',[TypeProprietaireController::class,'create']);
 Route::get('/typeproprietaire/index',[TypeProprietaireController::class,'index']);
-
-

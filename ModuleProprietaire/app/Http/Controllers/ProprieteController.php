@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Propriete;
 use Illuminate\Http\Request;
+use App\Models\TypePropriete;
 
 class ProprieteController extends Controller
 {
@@ -14,9 +15,8 @@ class ProprieteController extends Controller
      */
     public function index()
     {
-        $proprietes = Propriete::All();
         return view('propriete.index',[
-            'propriete'=>$proprietes
+            'proprietes'=> Propriete::all()
         ]);
     }
 
@@ -27,9 +27,9 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        $proprietes = Propriete::All();
-        return view('propriete.create',[
-            'propriete'=>$proprietes
+        $typeproprietes = TypePropriete::All();
+        return view('propriete/create',[
+            'typeproprietes'=>$typeproprietes
         ]);
     }
 
@@ -41,7 +41,11 @@ class ProprieteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputdata = $request->All();
+        $inputdata['statut'] = $request->has ('statut') ? true : false ;
+        
+        Propriete::create($request->All());
+        return redirect()->route('proprietes.index');   
     }
 
     /**
@@ -50,9 +54,9 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Propriete $propriete)
     {
-        //
+        return view('propriete.show',compact('propriete'));
     }
 
     /**
@@ -73,9 +77,27 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $typeproprietes = TypePropriete::all();
+        $propriete = Propriete::find($id);
+        return  view('propriete.update',[
+            'propriete'=>$propriete,
+            'typeproprietes'=>$typeproprietes]);
+    }
+    public function modifier(Request $request,Propriete $propriete)
+    {
+        $propriete = Propriete::find($request->id);
+        $propriete->update([
+            "nom_propriete"=>$request->nom_propriete,
+            "superficie"=>$request->superficie,
+            "nombre_etage"=>$request->nombre_etage,
+            "montant"=>$request->montant,
+            "adresse_propriete"=>$request->adresse_propriete,
+            "statut"=>$request->statut,
+            "type_proprietes_id"=>$request->typeproprietes_id,
+        ]);
+        return redirect()->route('proprietes.index');
     }
 
     /**
@@ -84,8 +106,10 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Propriete $propriete)
     {
-        //
+        $propriete->delete();
+        return redirect()->route('proprietes.index');
     }
+    
 }
