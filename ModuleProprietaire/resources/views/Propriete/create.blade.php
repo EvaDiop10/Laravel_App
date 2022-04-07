@@ -9,39 +9,43 @@
     <title>Document</title>
 </head>
 <body>
-    @csrf
     <h2>Ajouter Proprietés</h2>
 <div class="container">
-    <form class="row g-3" action="/proprietaires/store" method="POST">
+    <form class="row g-3" method="POST" action="{{route('proprietes/store')}}">
+    @csrf
     <div class="col-md-6">
         <label  class="form-label">Nom du proprieté</label>
-        <input  name="nom" class="form-control" id="inputEmail4">
+        <input  name="nom_propriete" class="form-control" id="inputEmail4">
     </div>
     <div class="col-md-6">
         <label for="inputPassword4" class="form-label">Superficie</label>
-        <input  class="form-control" id="inputPassword4">
+        <input name="superficie" class="form-control" id="inputPassword4">
     </div>
     <div class="col-md-6">
         <label for="inputPassword4" class="form-label">Nombre d'étages</label>
-        <input  class="form-control" id="inputPassword4">
+        <input name="nombre_etage" class="form-control" id="inputPassword4">
     </div>
     <div class="col-md-6">
         <label  class="form-label">Montant</label>
-        <input  name="civilite" class="form-control" id="inputEmail4">
+        <input  name="montant" class="form-control" id="inputEmail4">
     </div>
     <div class="col-12">
         <label for="inputAddress2" class="form-label">Address 2</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+        <input name="adresse_propriete" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
     </div>
     <div class="col-md-6">
         <label  class="form-label">Statut</label>
-        <input  name="telephone" class="form-control" id="inputEmail4">
+        <select  id="inputState" class="form-select" name="statut">
+            <option value=""selected>true</option>
+            <option value="" >false</option>
+        </select>
     </div>
     <div class="col-md-4">
-        <label for="type_propriete" class="form-label">Type de propriete</label>
-        <select id="inputState" class="form-select" name="typepropriete_id">
+        <label for="type_proprietes" class="form-label">Type de propriete</label>
+        <select id="inputState" class="form-select" name="type_proprietes_id">
             @foreach($typeproprietes as $typepropriete)
-            <option value="{{$typepropriete->id}}" selected>{{$typepropriete->libelle}}</option>
+            <option value="{{$typepropriete->id}}" selected></option>
+            <option value="">{{$typepropriete->libelle}}</option>
             @endforeach
         </select>
     </div>

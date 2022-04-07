@@ -12,7 +12,6 @@
     <h2>Liste Proprietés</h2> 
  <div class="">   
     <table class="table table table-striped">
-    @foreach($propriete as $proprietes)
   <thead>
     <tr>
       <th scope="col">Identifiant</th>
@@ -22,20 +21,20 @@
       <th scope="col">Montant</th>
       <th scope="col">Adresse</th>
       <th scope="col">Statut</th>
-      <th scope="col">Proprietaire</th>
+      <th scope="col">Type de proprieté</th>
     </tr>
   </thead>
   <tbody>
+  @foreach($proprietes as $propriete)
     <tr>
-      <th scope="row">{{$proprietes->id}}</th>
-      <td>{{$proprietes->nom_propriete}}</td>
-      <td>{{$proprietes->superficie}}</td>
-      <td>{{$proprietes->nombre_etage}}</td>
-      <td>{{$proprietes->montant}}</td>
-      <td>{{$proprietes->adresse_propriete}}</td>
-      <td>{{$proprietes->statut}}</td>
-      <td>{{$proprietes->telephone}}</td>
-      <td>{{$proprietes->typeproprietaire_id}}</td>
+      <th scope="row">{{$propriete->id}}</th>
+      <td>{{$propriete->nom_propriete}}</td>
+      <td>{{$propriete->superficie}}</td>
+      <td>{{$propriete->nombre_etage}}</td>
+      <td>{{$propriete->montant}}</td>
+      <td>{{$propriete->adresse_propriete}}</td>
+      <td>{{$propriete->statut}}</td>
+      <td>{{$propriete->typeproprietaire_id}}</td>
 
     </tr>
   </tbody>

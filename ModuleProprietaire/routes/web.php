@@ -47,8 +47,10 @@ Route::get('/proprietaires/delete/{proprietaire}',[ProprietaireController::class
 
 
 //route proprietes
-Route::get('/proprietes',[ProprieteController::class,'index']);
+Route::get('/proprietes',[ProprieteController::class,'index'])->name('proprietes.index');
 Route::post('/proprietes/create',[ProprieteController::class,'create']);
+Route::get('/proprietes/store',[ProprieteController::class,'store'])->name('proprietes.store');
+
 //route type_proprietaire
 Route::get('/typeproprietaire/index',[TypeproprietaireController::class,'index']);
 Route::get('/typeproprietaire/create',[TypeProprietaireController::class,'create']);

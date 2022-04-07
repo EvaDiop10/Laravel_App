@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Propriete;
 use Illuminate\Http\Request;
-use App\Models\TypeProprietaire;
+use App\Models\TypePropriete;
 
 class ProprieteController extends Controller
 {
@@ -15,9 +15,8 @@ class ProprieteController extends Controller
      */
     public function index()
     {
-        $proprietes = Propriete::All();
         return view('propriete.index',[
-            'propriete'=>$proprietes
+            'proprietes'=> Propriete::with('typeproprietes')->get()
         ]);
     }
 
@@ -28,7 +27,7 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        $typeproprietes = TypeProprietaire::All();
+        $typeproprietes = TypePropriete::All();
         return view('propriete/create',[
             'typeproprietes'=>$typeproprietes
         ]);
@@ -42,7 +41,11 @@ class ProprieteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputdata = $request->All();
+        $inputdata['statut'] = $request->has ('statut') ? true : false ;
+        
+        Propriete::create($request->All());
+        return redirect()->route('proprietes.index');   
     }
 
     /**
@@ -51,9 +54,9 @@ class ProprieteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Propriete $propriete)
     {
-        //
+        return view('propriete.show',compact('propriete'));
     }
 
     /**
