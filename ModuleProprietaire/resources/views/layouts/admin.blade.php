@@ -204,9 +204,9 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="proprietaires/create" class="nav-link">
+                <a href="{{route('proprietaires.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter un proprietaires</p>
+                  <p>Ajouter un proprietaire</p>
                 </a>
               </li>
               <li class="nav-item">
