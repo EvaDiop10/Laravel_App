@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Proprietaire;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Propriete extends Model
 {
@@ -15,7 +16,7 @@ class Propriete extends Model
     "montant",
     "adresse_propriete",
     "statut",
-    "typeproprietes_id",
+    "type_proprietes_id",
   ];
     
     protected $casts = [
@@ -27,5 +28,8 @@ class Propriete extends Model
     public function  TypePropriete()
     {
         return $this->belongsTo( TypePropriete::class);
+    }
+    public function proprietaire() {
+        return $this->belongsTo(Proprietaire::class);
     }
 }

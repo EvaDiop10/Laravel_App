@@ -41,11 +41,26 @@ class ProprieteController extends Controller
      */
     public function store(Request $request)
     {
-        $inputdata = $request->All();
-        $inputdata['statut'] = $request->has ('statut') ? true : false ;
+        $request->validate([
+            'nom_propriete'=>'required',
+            'superficie'=>'required',
+            'nombre_etage'=>'required',
+            'montant'=>'required',
+            'adresse_propriete'=>'required',
+            'statut'=>'required',
+            'type_proprietes_id'=>'required'
+        ]);
         
-        Propriete::create($request->All());
-        return redirect()->route('proprietes.index');   
+        Propriete::create([
+            "nom_propriete"=>$request->nom_propriete,
+            "superficie"=>$request->superficie,
+            "nombre_etage"=>$request->nombre_etage,
+            "montant"=>$request->montant,
+            "adresse_propriete"=>$request->adresse_propriete,
+            "statut"=>$request->statut,
+            "type_proprietes_id"=>$request->type_proprietes_id,
+        ]);
+        return redirect()->route('proprietes.index');  
     }
 
     /**

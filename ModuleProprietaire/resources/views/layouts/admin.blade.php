@@ -228,15 +228,15 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="{{route('proprietes.create')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Ajouter une propriété</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="{{route('proprietes.index')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Liste des propriété</p>
+                  <p>Liste des propriétés</p>
                 </a>
               </li>
             </ul>
