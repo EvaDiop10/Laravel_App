@@ -29,8 +29,8 @@
       <td>{{($propriete->proprietaire->prenom)?$propriete->proprietaire->nom.''.$propriete->proprietaire->nom:$propriete->proprietaire->nom}}</td>
       <td>{{$propriete->type_propriete->libelle}}</td>
       <td>
-            <a href="" class="btn btn-success" title="Modifier"><i class="bi bi-tools"></i></a>
-            <a href="" class="btn btn-danger" title="Supprimer"><i class="bi bi-x"></i></a>
+            <a href="{{route('proprietes.update',[$propriete])}}" class="btn btn-success" title="Modifier"><i class="bi bi-tools"></i></a>
+            <a href="{{route('proprietes.delete',[$propriete])}}" class="btn btn-danger" title="Supprimer"><i class="bi bi-x"></i></a>
       </td>
     </tr>
   </tbody>
