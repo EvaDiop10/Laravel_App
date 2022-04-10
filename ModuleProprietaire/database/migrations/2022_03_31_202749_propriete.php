@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('statut');
             $table->unsignedBigInteger('type_proprietes_id');
             $table->foreign('type_proprietes_id')->references('id')->on('type_proprietes');
+            $table->foreignId('proprietaire_id')->constrained();
             $table->timestamp('last_used_at')->nullable();
             $table->timestamps();
         });

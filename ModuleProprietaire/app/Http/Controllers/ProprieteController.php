@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Propriete;
+use App\Models\Proprietaire;
 use Illuminate\Http\Request;
 use App\Models\TypePropriete;
 
@@ -27,9 +28,11 @@ class ProprieteController extends Controller
      */
     public function create()
     {
-        $typeproprietes = TypePropriete::All();
+        $typeproprietes = TypePropriete::all();
+        $proprietaires = Proprietaire::all();
         return view('propriete/create',[
-            'typeproprietes'=>$typeproprietes
+            'typeproprietes'=>$typeproprietes,
+            'proprietaires'=>$proprietaires
         ]);
     }
 
@@ -48,6 +51,7 @@ class ProprieteController extends Controller
             'montant'=>'required',
             'adresse_propriete'=>'required',
             'statut'=>'required',
+            'proprietaire_id'=>'required',
             'type_proprietes_id'=>'required'
         ]);
         
@@ -59,6 +63,7 @@ class ProprieteController extends Controller
             "adresse_propriete"=>$request->adresse_propriete,
             "statut"=>$request->statut,
             "type_proprietes_id"=>$request->type_proprietes_id,
+            "proprietaire_id"=>$request->proprietaire_id
         ]);
         return redirect()->route('proprietes.index');  
     }

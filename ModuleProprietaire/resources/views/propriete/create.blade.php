@@ -26,9 +26,17 @@
         <label  class="form-label">Montant</label>
         <input  name="montant" class="form-control" id="inputEmail4">
     </div>
-    <div class="col-12">
+    <div class="col-6">
         <label for="inputAddress2" class="form-label">Address 2</label>
         <input name="adresse_propriete" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="col-6">
+        <label for="inputAddress2" class="form-label">Proprietaire</label>
+        <select name="proprietaire_id" class="form-control">
+            @foreach ($proprietaires as $proprietaire)
+                <option value="{{$proprietaire->id}}">{{($proprietaire->prenom)?$proprietaire->prenom.' '.$proprietaire->nom:$proprietaire->nom }}</option>
+            @endforeach
+        <select/>
     </div>
     <div class="col-md-6">
         <label  class="form-label">Statut</label>

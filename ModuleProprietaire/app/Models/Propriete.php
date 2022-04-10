@@ -9,15 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Propriete extends Model
 {
     use HasFactory;
-  protected $fillable = [
-    "nom_propriete",
-    "superficie",
-    "nombre_etage",
-    "montant",
-    "adresse_propriete",
-    "statut",
-    "type_proprietes_id",
-  ];
     
     protected $casts = [
         'statut' => 'boolean',
@@ -25,9 +16,9 @@ class Propriete extends Model
     
     protected $guarded = ['id'];
 
-    public function  TypePropriete()
+    public function  type_propriete()
     {
-        return $this->belongsTo( TypePropriete::class);
+        return $this->belongsTo( TypePropriete::class,'type_proprietes_id');
     }
     public function proprietaire() {
         return $this->belongsTo(Proprietaire::class);
