@@ -2,6 +2,7 @@
 @section('title', 'TS IMMO| Liste des propriétés')
 @section('content_wrapper')
     <h2>Liste Proprietés</h2> 
+    <a href="{{route('proprietes.create')}}" class="btn btn-primary">Ajouter</a>
  <div class="">   
     <table class="table table table-striped">
   <thead>

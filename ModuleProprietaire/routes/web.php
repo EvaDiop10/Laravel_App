@@ -32,8 +32,10 @@ Route::resource('proprietes', ProprieteController::class)->middleware('auth');
 Route::resource('agences', AgenceController::class)->middleware('auth');
 Route::resource('typeproprietaires', TypeproprietaireController::class)->middleware('auth');
 Route::resource('typeproprietes', TypeproprieteController::class)->middleware('auth');
+
 Route::post('/proprietaires/create',[ProprietaireController::class,'create'])->name('proprietaires.create');
 Route::post('/proprietaires/update',[ProprietaireController::class,'modifier'])->name('proprietaires.modifier');
+Route::get('/proprietaires/show/{proprietaire}',[ProprietaireController::class,'show'])->name('proprietaires.show');
 Route::get('/proprietaires/update/{proprietaire}',[ProprietaireController::class,'update'])->name('proprietaires.update');
 Route::get('/proprietaires/delete/{proprietaire}',[ProprietaireController::class,'delete'])->name('proprietaires.delete');
 Route::get('/proprietaires',[ProprietaireController::class,'index'])->name('proprietaires.index');
@@ -44,6 +46,7 @@ Route::post('/proprietes/create',[ProprieteController::class,'create'])->name('p
 Route::post('/proprietes/store',[ProprieteController::class,'store'])->name('proprietes.store');
 Route::get('/proprietes/update/{propriete}',[ProprieteController::class,'update'])->name('proprietes.update');
 Route::get('/proprietes/delete/{propriete}',[ProprieteController::class,'destroy'])->name('proprietes.delete');
+Route::post('/proprietes/modifier',[ProprieteController::class,'modifier'])->name('proprietes.modifier');
 
 Route::get('/typeproprietaire/create',[TypeProprietaireController::class,'create']);
 Route::get('/typeproprietaire/index',[TypeProprietaireController::class,'index']);

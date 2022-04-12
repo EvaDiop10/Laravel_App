@@ -2,6 +2,7 @@
 @section('title', 'TS IMMO| Ajouter une propriété')
 @section('content_wrapper')
     <h2>Ajouter Proprietés</h2>
+    <a href="{{route('proprietes.index')}}" class="btn btn-danger"><i class="bi bi-arrow-left"></i>Retour</a>
 <div class="container">
     @if ($errors->any())
         @foreach ($errors->all() as $error)

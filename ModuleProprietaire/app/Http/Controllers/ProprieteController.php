@@ -80,17 +80,6 @@ class ProprieteController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -99,14 +88,27 @@ class ProprieteController extends Controller
      */
     public function update($id)
     {
+        $proprietaires = Proprietaire::all();
         $typeproprietes = TypePropriete::all();
         $propriete = Propriete::find($id);
         return  view('propriete.update',[
             'propriete'=>$propriete,
-            'typeproprietes'=>$typeproprietes]);
+            'typeproprietes'=>$typeproprietes,
+            'proprietaires'=>$proprietaires
+        ]);
     }
     public function modifier(Request $request,Propriete $propriete)
     {
+        $request->validate([
+            'nom_propriete'=>'required',
+            'superficie'=>'required',
+            'nombre_etage'=>'required',
+            'montant'=>'required',
+            'adresse_propriete'=>'required',
+            'statut'=>'required',
+            'proprietaire_id'=>'required',
+            'type_proprietes_id'=>'required'
+        ]);
         $propriete = Propriete::find($request->id);
         $propriete->update([
             "nom_propriete"=>$request->nom_propriete,
@@ -115,7 +117,7 @@ class ProprieteController extends Controller
             "montant"=>$request->montant,
             "adresse_propriete"=>$request->adresse_propriete,
             "statut"=>$request->statut,
-            "type_proprietes_id"=>$request->typeproprietes_id,
+            "type_proprietes_id"=>$request->type_proprietes_id,
         ]);
         return redirect()->route('proprietes.index');
     }

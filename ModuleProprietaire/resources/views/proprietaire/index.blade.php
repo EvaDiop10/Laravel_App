@@ -32,6 +32,7 @@
           <td>{{$proprietaires->cni}}</td>
           <td>{{$proprietaires->telephone}}</td>
           <td>
+            <a href="{{route('proprietaires.show',[$proprietaires])}}" class="btn btn-success" title="Details"><i class="bi bi-eye-fill"></i></a>
             <a href="{{route('proprietaires.update',[$proprietaires])}}" class="btn btn-success" title="Modifier"><i class="bi bi-tools"></i></a>
             <a href="{{route('proprietaires.delete',[$proprietaires])}}" class="btn btn-danger" title="Supprimer"><i class="bi bi-x"></i></a>
           </td>
@@ -63,6 +64,7 @@
           <td>{{$proprietaires->adresse}}</td>
           <td>{{$proprietaires->telephone}}</td>
           <td>
+          <a href="{{route('proprietaires.show',[$proprietaires])}}" class="btn btn-success" title="Details"><i class="bi bi-eye-fill"></i></a>
             <a href="{{route('proprietaires.update',[$proprietaires])}}" class="btn btn-success" title="Modifier"><i class="bi bi-tools"></i></a>
             <a href="{{route('proprietaires.delete',[$proprietaires])}}" class="btn btn-danger" title="Supprimer"><i class="bi bi-x"></i></a>
         

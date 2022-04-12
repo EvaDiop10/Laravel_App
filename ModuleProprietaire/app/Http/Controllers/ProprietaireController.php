@@ -33,6 +33,12 @@ class ProprietaireController extends Controller
             'typeproprietaires'=>$typeproprietaires
         ]);
     }
+    public function show(Proprietaire $proprietaire)
+    {
+        return view('proprietaire.show',[
+            'proprietaire'=>$proprietaire
+        ]);
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -116,18 +122,6 @@ class ProprietaireController extends Controller
         $proprietaire->delete();
         return redirect()->route('proprietaires.index');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Proprietaire $proprietaires)
-    {
-        return response()->json($proprietaires);
-    }
-
 
     /**
      * Update the specified resource in storage.
